@@ -33,7 +33,7 @@ export interface SchemaArrayProps {
 
 export class SchemaBuilder<C extends SchemaConstraints = {}> {
 
-  private constructor(private name?: string) {}
+  private constructor(private name?: string, private location?: string) {}
 
   static object(properties?: SchemaObjectProps): JSONSchema7 {
     return SchemaBuilder.create().object(properties);
@@ -120,12 +120,12 @@ export class SchemaBuilder<C extends SchemaConstraints = {}> {
     return SchemaBuilder.array(properties);
   }
 
-  reference<S extends Constraint<C, 'schemas'>>(key: S): { '$ref': S } {
-    return {'$ref': key};
+  reference<S extends Constraint<C, 'schemas'>>(key: S): { '$ref': string } {
+    return {'$ref': `${this.location ? `${this.location}/` : ''}${key}`};
   }
 
-  static create(name?: string): SchemaBuilder {
-    return new SchemaBuilder(name);
+  static create(name?: string, location = '#/components/schemas'): SchemaBuilder {
+    return new SchemaBuilder(name, location);
   }
 }
 
@@ -143,7 +143,7 @@ export class Schemas<C extends SchemaConstraints = {}> {
     if(typeof schema === 'object') {
       this.schemas[name] = schema;
     } else {
-      this.schemas[name] = schema(SchemaBuilder.create(name));
+      this.schemas[name] = schema(SchemaBuilder.create(name, this.location));
     }
     return this as any;
   }
