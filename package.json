@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["src"],
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "prepare": "husky install",
