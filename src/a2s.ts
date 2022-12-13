@@ -99,6 +99,7 @@ export interface A2SMessageExample {
 
 export type A2SMessageConstraints = {
   schemas?: string;
+  messages?: string;
   correlationIds?: string;
 }
 

@@ -46,8 +46,8 @@ export class OperationBuilder<C extends A2SOperationConstraints = {}> {
     return this;
   }
 
-  message(...message: Array<A2SMessage | ((message: MessageBuilder<C>) => MessageBuilder<C>)>): this {
-    const messages = message.map(it => build(it, () => MessageBuilder.create()));
+  message(...message: Array<Constraint<C, 'messages'> | A2SMessage | ((message: MessageBuilder<C>) => MessageBuilder<C>)>): this {
+    const messages = message.map(it => (typeof(it) === 'string' ? { '$ref': `#/components/messages/${it}` } : build(it, () => MessageBuilder.create())));
     if(messages.length === 1) {
       this.operation.message = messages[0];
     } else {
