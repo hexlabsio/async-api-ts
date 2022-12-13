@@ -141,7 +141,7 @@ export interface A2SParameter {
 }
 
 
-export type ChannelConstraints = Pick<A2SComponentsConstraints, 'servers'> & A2SOperationConstraints;
+export type ChannelConstraints = Pick<A2SComponentsConstraints, 'servers' | 'parameters'> & A2SOperationConstraints;
 
 export interface A2SChannelItem<C extends ChannelConstraints = {}> {
   description?: string;
