@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": "src",
+    "rootDir": ".",
     "baseUrl": ".",
     "outDir": "./dist",
     "noUnusedLocals": true,
@@ -18,9 +18,10 @@
     "pretty": true,
     "inlineSourceMap": false,
     "inlineSources": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "generated/**/*"
   ]
 }

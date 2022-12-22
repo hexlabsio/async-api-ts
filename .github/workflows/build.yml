@@ -31,6 +31,9 @@ jobs:
 #      - name: Test
 #        run: npm test
 
+      - name: Generate
+        run: npm run generate
+
       - name: Production Build
         run: npm run build
 

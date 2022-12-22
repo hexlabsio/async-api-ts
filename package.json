@@ -1,14 +1,16 @@
 {
   "name": "@hexlabs/async-api-ts",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "files": [
     "src",
     "dist"
   ],
   "scripts": {
     "build": "tsc",
+    "start": "ts-node src/",
+    "generate": "ts-node generate.ts",
     "prepare": "husky install",
     "test": "jest --ci --runInBand --coverage --reporters=default --reporters=jest-junit",
     "lint": "eslint **/*.ts"
@@ -87,6 +89,6 @@
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
-    "json-schema-to-typescript": "^11.0.2"
+    "@hexlabs/json-schema-to-ts": "^1.1.8"
   }
 }

@@ -4,3 +4,4 @@ dist
 junit.xml
 coverage
 .husky
+generated
